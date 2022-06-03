@@ -54,7 +54,7 @@ select * from themes limit 10;
 
 
 create or replace table sets(
-  char(16) not null primary key,
+  id char(16) not null primary key,
   name tinytext not null,
   year smallint unsigned not null,
   theme_id smallint unsigned not null references themes(id),
@@ -90,7 +90,7 @@ select * from inventories limit 10;
 
 
 create or replace table inventory_sets(
-  inventory_id smallint unsigned nnull references inventories(id),
+  inventory_id smallint unsigned not null references inventories(id),
   set_id char(16) not null references sets(id),
   quantity tinyint unsigned not null,
   primary key (inventory_id, set_id)
